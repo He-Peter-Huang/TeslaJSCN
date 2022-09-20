@@ -25,7 +25,7 @@ exports.login = function login(credentials, callback) {
         code_challenge_method: 'S256',
         locale: 'en',
         prompt: 'login',
-        redirect_uri: 'https://auth.tesla.com/void/callback',
+        redirect_uri: 'https://auth.tesla.cn/void/callback',
         response_type: 'code',
         scope: 'openid email offline_access',
         state: generateCodeChallenge(generateCodeVerifier()),
@@ -37,7 +37,7 @@ exports.login = function login(credentials, callback) {
 
     req({
         method: 'GET',
-        url: 'https://auth.tesla.com/oauth2/v3/authorize',
+        url: 'https://auth.tesla.cn/oauth2/v3/authorize',
         qs: queryString,
         headers: {
             "sec-fetch-site": "none",
@@ -103,7 +103,7 @@ exports.login = function login(credentials, callback) {
 
         return req({
             method: 'POST',
-            url: (url.query.issuer || 'https://auth.tesla.com/oauth2/v3') + '/token',
+            url: (url.query.issuer || 'https://auth.tesla.cn/oauth2/v3') + '/token',
             jar: false,
             json: true,
             headers: {
